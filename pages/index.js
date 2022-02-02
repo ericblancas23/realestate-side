@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Flex, Box, Text, Button } from "@chakra-ui/layout";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { baseUrl, useFetchApi } from "../hooks/useFetchApi";
+import { baseUrl, fetchApi } from "../utils/fetchApi";
 import Property from "../components/Property";
 
 export const Banner = ({
@@ -78,11 +78,11 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
 
 export const getStaticProps = async () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const propertyForSale = await useFetchApi(
+  const propertyForSale = await fetchApi(
     `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`
   );
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const propertyForRent = await useFetchApi(
+  const propertyForRent = await fetchApi(
     `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6`
   );
 

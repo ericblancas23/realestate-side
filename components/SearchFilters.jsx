@@ -14,7 +14,7 @@ import { MdCancel } from "react-icons/md";
 import Image from "next/image";
 
 import { filterData, getFilterValues } from "../utils/filterData";
-import { baseUrl, useFetchApi } from "../hooks/useFetchApi";
+import { baseUrl, fetchApi } from "../utils/fetchApi";
 import noresult from "../assets/images/noresult.svg";
 
 const SearchFilters = () => {
@@ -23,7 +23,7 @@ const SearchFilters = () => {
   const [locationData, setLocationData] = useState();
   const [showLocation, setShowLocation] = useState(false);
   const [loading, setLoading] = useState(false);
-  const data = useFetchApi(`${baseUrl}/auto-complete?query=${searchTerm}`);
+  const data = fetchApi(`${baseUrl}/auto-complete?query=${searchTerm}`);
 
   const router = useRouter();
 
