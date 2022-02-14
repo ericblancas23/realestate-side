@@ -6,9 +6,9 @@ import { BsFilter } from "react-icons/bs";
 import SearchFilters from "../components/SearchFilters";
 import Property from "../components/Property";
 import noresult from "../assets/images/noresult.svg";
-import { fetchApi } from "../utils/fetchApi";
+import { fetchApi, baseUrl } from "../utils/fetchApi";
 
-const Search = ({ Properties }) => {
+const Search = ({ properties }) => {
   const [searchFilters, setSearchFilters] = useState(false);
   const router = useRouter();
   const { query } = router;
@@ -36,9 +36,11 @@ const Search = ({ Properties }) => {
           Properties {query.purpose}
         </Text>
         <Flex flexWrap="wrap">
-          {/* {[].map((property) => <Property property={property} key={property.id} />})} */}
+          {properties.map((property) => (
+            <Property property={property} key={property.id} />
+          ))}
         </Flex>
-        {[].length === 3 && (
+        {properties.length === 0 && (
           <Flex
             justifyContent="center"
             alignItems="center"
